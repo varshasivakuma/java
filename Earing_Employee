@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class IncomeTaxCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the income amount: ");
+        double income = scanner.nextDouble();
+
+        double tax = calculateTax(income);
+        System.out.println("Income tax is: Rs. " + tax);
+    }
+
+    public static double calculateTax(double income) {
+        double tax = 0;
+
+        if (income <= 50000) {
+            // No tax for income up to Rs. 50,000
+            tax = 0;
+        } else if (income <= 60000) {
+            // 10% on additional amount above Rs. 50,000
+            tax = (income - 50000) * 0.10;
+        } else if (income <= 150000) {
+            // 20% on additional amount above Rs. 60,000
+            tax = 10000 + (income - 60000) * 0.20;
+        } else {
+            // 30% on additional amount above Rs. 1,50,000
+            tax = 29000 + (income - 150000) * 0.30;
+        }
+
+        return tax;
+    }
+}
