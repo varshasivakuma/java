@@ -1,1 +1,59 @@
+public class BankDatabase {
+    private double[] accounts; // Array to store account balances
+
+    // Constructor to initialize the accounts array
+    public BankDatabase(int numAccounts) {
+        accounts = new double[numAccounts];
+    }
+
+    // Deposit a certain amount into an account
+    public void deposit(int accountNumber, double amount) {
+        if (isValidAccount(accountNumber)) {
+            accounts[accountNumber] += amount;
+            System.out.println("Deposit of Rs. " + amount + " into account " + accountNumber + " successful.");
+        } else {
+            System.out.println("Invalid account number.");
+        }
+    }
+
+    // Withdraw a certain amount from an account
+    public void withdraw(int accountNumber, double amount) {
+        if (isValidAccount(accountNumber)) {
+            if (accounts[accountNumber] >= amount) {
+                accounts[accountNumber] -= amount;
+                System.out.println("Withdrawal of Rs. " + amount + " from account " + accountNumber + " successful.");
+            } else {
+                System.out.println("Insufficient funds in account " + accountNumber);
+            }
+        } else {
+            System.out.println("Invalid account number.");
+        }
+    }
+
+    // Return the balance in an account
+    public double getBalance(int accountNumber) {
+        if (isValidAccount(accountNumber)) {
+            return accounts[accountNumber];
+        } else {
+            System.out.println("Invalid account number.");
+            return -1; // Return -1 indicating invalid account
+        }
+    }
+
+    // Helper method to check if the account number is valid
+    private boolean isValidAccount(int accountNumber) {
+        return accountNumber >= 0 && accountNumber < accounts.length;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        BankDatabase bankDatabase = new BankDatabase(5); // Creating a bank database with 5 accounts
+
+        bankDatabase.deposit(0, 1000); // Deposit Rs. 1000 into account 0
+        bankDatabase.withdraw(1, 500); // Withdraw Rs. 500 from account 1
+        System.out.println("Balance in account 0: Rs. " + bankDatabase.getBalance(0)); // Get balance of account 0
+    }
+}
 
