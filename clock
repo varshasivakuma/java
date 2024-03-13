@@ -1,0 +1,84 @@
+public class Clock {
+    private int hours;
+    private int minutes;
+    private int seconds;
+    private boolean isAM;
+
+    // Constructor to initialize the time
+    public Clock(int hours, int minutes, int seconds) {
+        if (isValidTime(hours, minutes, seconds)) {
+            this.hours = hours;
+            this.minutes = minutes;
+            this.seconds = seconds;
+        } else {
+            System.out.println("Invalid time specified.");
+        }
+    }
+
+    // Method to check the validity of the time
+    private boolean isValidTime(int hours, int minutes, int seconds) {
+        return (hours >= 0 && hours < 24) && (minutes >= 0 && minutes < 60) && (seconds >= 0 && seconds < 60);
+    }
+
+    // Method to set the time to AM/PM mode
+    public void setAMPM(int hours) {
+        if (hours >= 0 && hours < 12) {
+            this.isAM = true;
+        } else if (hours >= 12 && hours < 24) {
+            this.isAM = false;
+        } else {
+            System.out.println("Invalid hours specified.");
+        }
+    }
+
+    // Method to display the time in AM/PM format
+    public void displayTime() {
+        String ampm = (isAM) ? "AM" : "PM";
+        int displayHours = (hours == 0 || hours == 12) ? 12 : hours % 12;
+        System.out.println("Time: " + displayHours + ":" + String.format("%02d", minutes) + ":" + String.format("%02d", seconds) + " " + ampm);
+    }
+
+    // Getters and setters for hours, minutes, and seconds (if needed)
+    public int getHours() {
+        return hours;
+    }
+
+    public void setHours(int hours) {
+        if (isValidTime(hours, this.minutes, this.seconds)) {
+            this.hours = hours;
+        } else {
+            System.out.println("Invalid hours specified.");
+        }
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        if (isValidTime(this.hours, minutes, this.seconds)) {
+            this.minutes = minutes;
+        } else {
+            System.out.println("Invalid minutes specified.");
+        }
+    }
+
+    public int getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(int seconds) {
+        if (isValidTime(this.hours, this.minutes, seconds)) {
+            this.seconds = seconds;
+        } else {
+            System.out.println("Invalid seconds specified.");
+        }
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        Clock clock = new Clock(11, 45, 30); // Creating a clock instance
+        clock.setAMPM(11); // Setting time to AM/PM mode
+        clock.displayTime(); // Displaying the time
+    }
+}
