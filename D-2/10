@@ -1,0 +1,30 @@
+public class Example {
+    // a) Final variable
+    final int finalVariable = 10;
+
+    // b) Final method
+    public final void finalMethod() {
+        System.out.println("Final method called");
+    }
+
+    // c) Final class
+    final class FinalClass {
+        void display() {
+            System.out.println("Final class method called");
+        }
+    }
+
+    public static void main(String[] args) {
+        Example example = new Example();
+
+        // Accessing final variable
+        System.out.println("Final variable: " + example.finalVariable);
+
+        // Calling final method
+        example.finalMethod();
+
+        // Creating an instance of the final class
+        FinalClass finalObj = example.new FinalClass();
+        finalObj.display();
+    }
+}
