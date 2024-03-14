@@ -1,0 +1,43 @@
+class Superclass {
+    String message = "Hello from superclass";
+
+    Superclass() {
+        System.out.println("Superclass constructor");
+    }
+
+    void display() {
+        System.out.println("Displaying from superclass");
+    }
+}
+
+class Subclass extends Superclass {
+    String message = "Hello from subclass";
+
+    Subclass() {
+        // b) Calling superclass constructor
+        super();
+        System.out.println("Subclass constructor");
+    }
+
+    void display() {
+        // c) Invoking superclass method
+        super.display();
+        System.out.println("Displaying from subclass");
+    }
+
+    void showMessage() {
+        // a) Accessing superclass members
+        System.out.println("Superclass message: " + super.message);
+        System.out.println("Subclass message: " + message);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Subclass subclassObj = new Subclass();
+        System.out.println("--------------------");
+        subclassObj.display();
+        System.out.println("--------------------");
+        subclassObj.showMessage();
+    }
+}
