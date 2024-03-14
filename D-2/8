@@ -1,0 +1,64 @@
+// Interface Tree
+interface Tree {
+    void fruits(String fruitType, int quantity);
+    void leaves(String leafColor, int leafCount, boolean isDeciduous);
+    void flowers(String flowerColor, int petalCount, String fragrance, boolean hasNectar);
+}
+
+// Branch1 class implementing Tree interface
+class Branch1 implements Tree {
+    @Override
+    public void fruits(String fruitType, int quantity) {
+        System.out.println("Branch 1 produces " + quantity + " " + fruitType + "(s)");
+    }
+
+    @Override
+    public void leaves(String leafColor, int leafCount, boolean isDeciduous) {
+        String type = isDeciduous ? "deciduous" : "evergreen";
+        System.out.println("Branch 1 has " + leafCount + " " + leafColor + " " + type + " leaves");
+    }
+
+    @Override
+    public void flowers(String flowerColor, int petalCount, String fragrance, boolean hasNectar) {
+        String nectar = hasNectar ? "with nectar" : "without nectar";
+        System.out.println("Branch 1 has flowers with " + petalCount + " " + flowerColor + " petals, fragrance: " + fragrance + ", " + nectar);
+    }
+}
+
+// Branch2 class implementing Tree interface
+class Branch2 implements Tree {
+    @Override
+    public void fruits(String fruitType, int quantity) {
+        System.out.println("Branch 2 produces " + quantity + " " + fruitType + "(s)");
+    }
+
+    @Override
+    public void leaves(String leafColor, int leafCount, boolean isDeciduous) {
+        String type = isDeciduous ? "deciduous" : "evergreen";
+        System.out.println("Branch 2 has " + leafCount + " " + leafColor + " " + type + " leaves");
+    }
+
+    @Override
+    public void flowers(String flowerColor, int petalCount, String fragrance, boolean hasNectar) {
+        String nectar = hasNectar ? "with nectar" : "without nectar";
+        System.out.println("Branch 2 has flowers with " + petalCount + " " + flowerColor + " petals, fragrance: " + fragrance + ", " + nectar);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating instances of Branch1 and Branch2
+        Branch1 branch1 = new Branch1();
+        Branch2 branch2 = new Branch2();
+
+        // Using methods of Branch1
+        branch1.fruits("Apple", 10);
+        branch1.leaves("Green", 100, true);
+        branch1.flowers("Red", 5, "Sweet", true);
+
+        // Using methods of Branch2
+        branch2.fruits("Orange", 20);
+        branch2.leaves("Yellow", 80, false);
+        branch2.flowers("White", 8, "Fragrant", false);
+    }
+}
