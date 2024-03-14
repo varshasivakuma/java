@@ -1,0 +1,23 @@
+public class Example<T extends Number> {
+    private T value;
+
+    public Example(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public static void main(String[] args) {
+        Example<Integer> intExample = new Example<>(10);
+        System.out.println("Integer Value: " + intExample.getValue());
+
+        // This will give a compile-time error as String is not a subclass of Number
+        // Example<String> stringExample = new Example<>("Hello");
+    }
+}
