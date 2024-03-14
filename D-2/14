@@ -1,0 +1,35 @@
+public class Pair<K, V> {
+    private K key;
+    private V value;
+
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public K getKey() {
+        return key;
+    }
+
+    public void setKey(K key) {
+        this.key = key;
+    }
+
+    public V getValue() {
+        return value;
+    }
+
+    public void setValue(V value) {
+        this.value = value;
+    }
+
+    public static void main(String[] args) {
+        // Creating a Pair for Integer and String
+        Pair<Integer, String> pair1 = new Pair<>(1, "One");
+        System.out.println("Key: " + pair1.getKey() + ", Value: " + pair1.getValue());
+
+        // Creating a Pair for String and Double
+        Pair<String, Double> pair2 = new Pair<>("PI", 3.14159);
+        System.out.println("Key: " + pair2.getKey() + ", Value: " + pair2.getValue());
+    }
+}
