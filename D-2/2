@@ -1,0 +1,27 @@
+class Parent {
+    int a, b;
+
+    Parent() {
+        this.a = 10;
+        this.b = 15;
+    }
+
+    Parent(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    void disp() {
+        System.out.println("a = " + a + ", b = " + b);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parent obj1 = new Parent(); // calling default constructor
+        obj1.disp();
+        
+        Parent obj2 = new Parent(20, 25); // calling parameterized constructor
+        obj2.disp();
+    }
+}
