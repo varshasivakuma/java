@@ -1,0 +1,22 @@
+import java.util.Arrays;
+
+public class EqualLengthArrays {
+    public static void main(String[] args) {
+        int[] array1 = {1, 2, 3};
+        int[] array2 = {4, 5};
+
+        // Check if arrays have equal length
+        if (array1.length != array2.length) {
+            // Determine the smallest length among the two arrays
+            int minLength = Math.min(array1.length, array2.length);
+
+            // Resize arrays using Arrays.copyOf()
+            array1 = Arrays.copyOf(array1, minLength);
+            array2 = Arrays.copyOf(array2, minLength);
+        }
+
+        // Print the arrays
+        System.out.println("Array 1: " + Arrays.toString(array1));
+        System.out.println("Array 2: " + Arrays.toString(array2));
+    }
+}
