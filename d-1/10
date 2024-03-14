@@ -1,0 +1,18 @@
+public class AgeCalculations {
+    public static void main(String[] args) {
+        int agePerson = 28;
+        int ageYoungerBrother = 24;
+
+        // Age of the older brother
+        int ageOlderBrother = ageYoungerBrother + (agePerson - ageYoungerBrother);
+        System.out.println("Age of the older brother: " + ageOlderBrother);
+
+        // Age of the person when older brother is 56
+        int ageWhenOlderBrotherIs56 = ageOlderBrother + (ageOlderBrother - ageYoungerBrother);
+        System.out.println("Age of the person when older brother is 56: " + ageWhenOlderBrotherIs56);
+
+        // Age of the younger brother when older brother was 5
+        int ageYoungerBrotherWhenOlderBrotherWas5 = ageYoungerBrother - (ageOlderBrother - 5);
+        System.out.println("Age of the younger brother when older brother was 5: " + ageYoungerBrotherWhenOlderBrotherWas5);
+    }
+}
