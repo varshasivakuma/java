@@ -1,0 +1,15 @@
+public class GreatestLoop {
+    public static void main(String[] args) {
+        int loop1 = 10;
+        int loop2 = 11;
+        int loop3 = 12;
+
+        if (loop1 > loop2 && loop1 > loop3) {
+            System.out.println("Loop 1 has the greatest value.");
+        } else if (loop2 > loop3) {
+            System.out.println("Loop 2 has the greatest value.");
+        } else {
+            System.out.println("Loop 3 has the greatest value.");
+        }
+    }
+}
