@@ -1,0 +1,48 @@
+import java.util.Scanner;
+import java.util.Calendar;
+import java.util.Date;
+
+public class InputExample {
+    public static void main(String[] args) {
+        // Get the current time
+        Calendar calendar = Calendar.getInstance();
+        Date currentTime = calendar.getTime();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        // Check if the current time is within the specified range (01:00 PM to 02:00 PM)
+        if (hour == 13 && minute >= 0 && minute <= 59) {
+            Scanner scanner = new Scanner(System.in);
+
+            // Get char input
+            System.out.print("Enter a character: ");
+            char ch = scanner.next().charAt(0);
+            System.out.println("Character entered: " + ch);
+
+            // Get String input
+            System.out.print("Enter a string: ");
+            String str = scanner.next();
+            System.out.println("String entered: " + str);
+
+            // Get int input
+            System.out.print("Enter an integer: ");
+            int numInt = scanner.nextInt();
+            System.out.println("Integer entered: " + numInt);
+
+            // Get float input
+            System.out.print("Enter a float: ");
+            float numFloat = scanner.nextFloat();
+            System.out.println("Float entered: " + numFloat);
+
+            // Get double input
+            System.out.print("Enter a double: ");
+            double numDouble = scanner.nextDouble();
+            System.out.println("Double entered: " + numDouble);
+
+            // Close the scanner
+            scanner.close();
+        } else {
+            System.out.println("Input is only accepted between 01:00 PM to 02:00 PM.");
+        }
+    }
+}
