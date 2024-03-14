@@ -1,0 +1,25 @@
+public class PrimeNumberCount {
+    public static void main(String[] args) {
+        int[] numbers = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29}; // Sample array
+        int primeCount = 0;
+
+        for (int num : numbers) {
+            boolean isPrime = true;
+            if (num <= 1) {
+                isPrime = false;
+            } else {
+                for (int i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+            if (isPrime) {
+                primeCount++;
+            }
+        }
+
+        System.out.println("Number of prime numbers: " + primeCount);
+    }
+}
