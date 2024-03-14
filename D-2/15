@@ -1,0 +1,30 @@
+public class Example {
+    // Generic method to compare two objects
+    public static <T extends Comparable<T>> int compare(T obj1, T obj2) {
+        return obj1.compareTo(obj2);
+    }
+
+    // Generic method to print an array
+    public static <E> void printArray(E[] array) {
+        for (E element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        // Using the compare method with different data types
+        System.out.println("Comparison result (Integer): " + compare(10, 20));
+        System.out.println("Comparison result (String): " + compare("apple", "banana"));
+
+        // Using the printArray method with different data types
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        String[] stringArray = {"apple", "banana", "cherry"};
+
+        System.out.print("Integer Array: ");
+        printArray(intArray);
+
+        System.out.print("String Array: ");
+        printArray(stringArray);
+    }
+}
