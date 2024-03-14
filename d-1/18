@@ -1,0 +1,20 @@
+public class ShortestPath {
+    public static void main(String[] args) {
+        int shortestPath = 2; // Sample shortest path
+        String result;
+
+        switch (shortestPath) {
+            case 1:
+                result = "First for loop is shortest path";
+                break;
+            case 2:
+                result = "Second for loop is shortest path";
+                break;
+            default:
+                result = "Both for loops have the same length";
+                break;
+        }
+
+        System.out.println(result);
+    }
+}
