@@ -1,0 +1,33 @@
+Find the Mth maximum number and Nth minimum number in an array and then find the sum of it and difference of it.
+
+import java.util.Arrays;
+
+public class MaxMinSumDifference {
+    public static void main(String[] args) {
+        int[] array = {10, 5, 20, 15, 30, 25}; // Example array
+        int m = 3; // Mth maximum number
+        int n = 2; // Nth minimum number
+        
+        int mthMax = findMthMax(array, m);
+        int nthMin = findNthMin(array, n);
+        
+        int sum = mthMax + nthMin;
+        int difference = mthMax - nthMin;
+        
+        System.out.println("Mth maximum number: " + mthMax);
+        System.out.println("Nth minimum number: " + nthMin);
+        System.out.println("Sum: " + sum);
+        System.out.println("Difference: " + difference);
+    }
+    
+    public static int findMthMax(int[] array, int m) {
+        Arrays.sort(array);
+        int index = array.length - m;
+        return array[index];
+    }
+    
+    public static int findNthMin(int[] array, int n) {
+        Arrays.sort(array);
+        return array[n - 1];
+    }
+}
