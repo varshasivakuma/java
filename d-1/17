@@ -1,0 +1,20 @@
+public class LuckyGuess {
+    public static void main(String[] args) {
+        int guess = 7; // Sample guess
+        String result;
+
+        switch (guess) {
+            case 7:
+                result = "Lucky guess!";
+                break;
+            case 13:
+                result = "Unlucky guess!";
+                break;
+            default:
+                result = "Normal guess";
+                break;
+        }
+
+        System.out.println(result);
+    }
+}
