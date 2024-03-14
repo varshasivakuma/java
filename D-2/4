@@ -1,0 +1,27 @@
+public class Main {
+    // a) Overloading by increasing and decreasing the number of parameters
+    static int sum(int a, int b) {
+        return a + b;
+    }
+
+    static int sum(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // b) Overloading by changing the data types of parameters
+    static double sum(double a, double b) {
+        return a + b;
+    }
+
+    // c) Overloading by interchanging the parameters
+    static int sum(int b, int a) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Sum of 5 and 10: " + sum(5, 10));
+        System.out.println("Sum of 5, 10, and 15: " + sum(5, 10, 15));
+        System.out.println("Sum of 2.5 and 3.5: " + sum(2.5, 3.5));
+        System.out.println("Sum of 100 and 200 (interchanged parameters): " + sum(100, 200));
+    }
+}
