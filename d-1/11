@@ -1,0 +1,11 @@
+public class BirthYearCalculation {
+    public static void main(String[] args) {
+        int currentYear = 2073;
+        int eligibilityAge = 21;
+
+        // Calculating birth year
+        int birthYear = currentYear - eligibilityAge;
+        int medianYear = (birthYear + 2023) / 2;
+        System.out.println("Median of birth year and 2023: " + medianYear);
+    }
+}
