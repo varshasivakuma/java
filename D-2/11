@@ -1,0 +1,38 @@
+public class Example {
+    // Instance variable
+    int number;
+
+    // Constructor with one parameter
+    public Example(int number) {
+        // a) Referencing instance variable
+        this.number = number;
+    }
+
+    // Constructor invoking another constructor
+    public Example() {
+        // b) Invoking another constructor
+        this(100); // Calls the constructor with one parameter, passing 100 as the argument
+    }
+
+    // Method to pass current object as a parameter
+    public void passObject(Example obj) {
+        System.out.println("Object number: " + obj.number);
+    }
+
+    // Method returning current object
+    public Example returnObject() {
+        // c) Returning current object
+        return this;
+    }
+
+    public static void main(String[] args) {
+        Example obj1 = new Example(); // Invokes constructor with no parameters
+        System.out.println("Object 1 number: " + obj1.number); // Prints 100
+
+        Example obj2 = new Example(200); // Invokes constructor with one parameter
+        System.out.println("Object 2 number: " + obj2.number); // Prints 200
+
+        obj1.passObject(obj2); // Passes obj2 as a parameter
+        obj2.returnObject(); // Returns obj2
+    }
+}
