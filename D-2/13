@@ -1,0 +1,25 @@
+public class Box<T> {
+    private T data;
+
+    public Box(T data) {
+        this.data = data;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public static void main(String[] args) {
+        // Creating a Box for Integer
+        Box<Integer> intBox = new Box<>(10);
+        System.out.println("Integer Value: " + intBox.getData());
+
+        // Creating a Box for String
+        Box<String> stringBox = new Box<>("Hello, world!");
+        System.out.println("String Value: " + stringBox.getData());
+    }
+}
