@@ -1,0 +1,52 @@
+java
+public class StringMethodsAndConstructorsDemo {
+    public static void main(String[] args) {
+        // String constructors
+        String str1 = new String(); // Empty string
+        String str2 = new String("Hello"); // Initialized with a string literal
+        char[] charArray = {'W', 'o', 'r', 'l', 'd'};
+        String str3 = new String(charArray); // Initialized with a char array
+        byte[] byteArray = {72, 101, 108, 108, 111};
+        String str4 = new String(byteArray); // Initialized with a byte array
+
+        // String methods
+        String str = "Hello, World!";
+        
+        // length() method
+        int length = str.length();
+        System.out.println("Length of the string: " + length);
+        
+        // charAt() method
+        char charAtIndex = str.charAt(7);
+        System.out.println("Character at index 7: " + charAtIndex);
+        
+        // substring() method
+        String substring = str.substring(7);
+        System.out.println("Substring from index 7: " + substring);
+        
+        // indexOf() method
+        int index = str.indexOf('W');
+        System.out.println("Index of 'W': " + index);
+        
+        // concat() method
+        String newString = str.concat(" How are you?");
+        System.out.println("Concatenated string: " + newString);
+        
+        // replace() method
+        String replacedString = str.replace('o', 'x');
+        System.out.println("String after replacement: " + replacedString);
+        
+        // toUpperCase() method
+        String upperCaseString = str.toUpperCase();
+        System.out.println("String in upper case: " + upperCaseString);
+        
+        // toLowerCase() method
+        String lowerCaseString = str.toLowerCase();
+        System.out.println("String in lower case: " + lowerCaseString);
+        
+        // trim() method
+        String stringWithSpaces = "  Hello, World!   ";
+        String trimmedString = stringWithSpaces.trim();
+        System.out.println("Trimmed string: " + trimmedString);
+    }
+}
