@@ -1,0 +1,33 @@
+public class Example {
+    // a) Static variable
+    static int staticVariable = 10;
+
+    // b) Static method
+    public static void staticMethod() {
+        System.out.println("Static method called");
+    }
+
+    // c) Static block
+    static {
+        System.out.println("Static block executed");
+    }
+
+    // d) Static nested class
+    static class StaticNestedClass {
+        void display() {
+            System.out.println("Static nested class method called");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Accessing static variable
+        System.out.println("Static variable: " + staticVariable);
+
+        // Calling static method
+        staticMethod();
+
+        // Accessing static nested class
+        StaticNestedClass nestedObject = new StaticNestedClass();
+        nestedObject.display();
+    }
+}
