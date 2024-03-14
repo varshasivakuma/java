@@ -1,0 +1,35 @@
+java
+public class DataTypeConversionDemo {
+    public static void main(String[] args) {
+        // Implicit conversion (widening) from smaller data types to larger ones
+        int intValue = 10;
+        long longValue = intValue; // int to long
+
+        float floatValue = 3.14f;
+        double doubleValue = floatValue; // float to double
+
+        // Explicit conversion (narrowing) from larger data types to smaller ones
+        double largeDoubleValue = 123456789.123456789;
+        float smallFloatValue = (float) largeDoubleValue; // double to float (explicit casting)
+
+        long largeLongValue = 999999999999L;
+        int smallIntValue = (int) largeLongValue; // long to int (explicit casting)
+
+        // Overflow and underflow scenarios
+        int overflowInt = Integer.MAX_VALUE + 1; // Overflow scenario
+        int underflowInt = Integer.MIN_VALUE - 1; // Underflow scenario
+
+        // Output results
+        System.out.println("Implicit Conversion:");
+        System.out.println("int to long: " + longValue);
+        System.out.println("float to double: " + doubleValue);
+
+        System.out.println("\nExplicit Conversion:");
+        System.out.println("double to float: " + smallFloatValue);
+        System.out.println("long to int: " + smallIntValue);
+
+        System.out.println("\nOverflow and Underflow Scenarios:");
+        System.out.println("Overflow: " + overflowInt);
+        System.out.println("Underflow: " + underflowInt);
+    }
+}
