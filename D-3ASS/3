@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+class BankAccount {
+    private String depositorName;
+    private long accountNumber;
+    private String accountType;
+    private double balance;
+
+    public BankAccount() {
+        this.balance = 10000; // Initial balance amount
+    }
+
+    public void readAccountDetails() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter account number: ");
+        this.accountNumber = scanner.nextLong();
+        scanner.nextLine(); // Consume newline
+        System.out.print("Enter depositor name: ");
+        this.depositorName = scanner.nextLine();
+        System.out.print("Enter account type (Savings/Current): ");
+        this.accountType = scanner.nextLine();
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            this.balance += amount;
+            System.out.println("Deposit successful. Updated balance: Rs." + this.balance);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (this.balance - amount >= 500) {
+            this.balance -= amount;
+            System.out.println("Withdrawal successful. Updated balance: Rs." + this.balance);
+        } else {
+            System.out.println("Insufficient balance. Minimum balance should be Rs.500.");
+        }
+    }
+
+    public void displayBalance() {
+        System.out.println("Account Details:");
+        System.out.println("Depositor Name: " + this.depositorName);
+        System.out.println("Account Number: " + this.accountNumber);
+        System.out.println("Account Type: " + this.accountType);
+        System.out.println("Current Balance: Rs." + this.balance);
+    }
+}
+
+public class BankAccountDemo {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount();
+
+        // Reading account details
+        account.readAccountDetails();
+
+        // Deposit some amount
+        account.deposit(2000);
+
+        // Withdraw some amount
+        account.withdraw(1500);
+
+        // Display balance
+        account.displayBalance();
+    }
+}
