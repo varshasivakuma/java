@@ -1,0 +1,98 @@
+import java.util.Random;
+
+class MatrixThread extends Thread {
+    private int[][] matrix;
+    private int rowCount;
+    private int colCount;
+
+    public MatrixThread(String name, int rowCount, int colCount) {
+        super(name);
+        this.rowCount = rowCount;
+        this.colCount = colCount;
+        this.matrix = new int[rowCount][colCount];
+        generateRandomMatrix();
+    }
+
+    private void generateRandomMatrix() {
+        Random random = new Random();
+        for (int i = 0; i < rowCount; i++) {
+            for (int j = 0; j < colCount; j++) {
+                matrix[i][j] = random.nextInt(10); // Generate random numbers from 0 to 9
+            }
+        }
+    }
+
+    public int[][] getMatrix() {
+        return matrix;
+    }
+
+    public int getTotalElements() {
+        return rowCount * colCount;
+    }
+
+    @Override
+    public void run() {
+        System.out.println(getName() + " Matrix:");
+        for (int i = 0; i < rowCount; i++) {
+            for (int j = 0; j < colCount; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+public class MatrixThreadsDemo {
+    public static void main(String[] args) {
+        MatrixThread t1 = new MatrixThread("T1", 3, 3);
+        MatrixThread t2 = new MatrixThread("T2", 3, 3);
+
+        Thread t3 = new Thread(() -> {
+            try {
+                t1.join();
+                t2.join();
+                System.out.println("Total elements in T1 and T2: " + (t1.getTotalElements() + t2.getTotalElements()));
+                System.out.println("Matrix Addition Result:");
+                int[][] resultMatrix = addMatrices(t1.getMatrix(), t2.getMatrix());
+                printMatrix(resultMatrix);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "T3");
+
+        Thread t4 = new Thread(() -> {
+            try {
+                Thread.sleep(2000); // Simulating some computation time
+                System.out.println("Thread 4 completed counting elements.");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "T4");
+
+        t3.start();
+        t4.start();
+    }
+
+    public static int[][] addMatrices(int[][] matrix1, int[][] matrix2) {
+        int rowCount = matrix1.length;
+        int colCount = matrix1[0].length;
+        int[][] resultMatrix = new int[rowCount][colCount];
+
+        for (int i = 0; i < rowCount; i++) {
+            for (int j = 0; j < colCount; j++) {
+                resultMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
+            }
+        }
+
+        return resultMatrix;
+    }
+
+    public static void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int num : row) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    }
+}
