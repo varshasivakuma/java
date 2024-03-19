@@ -1,0 +1,30 @@
+// Custom exception class
+class InvalidDecimalNumberException extends Exception {
+    public InvalidDecimalNumberException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            double userInput = getUserInput();
+            if (!isValidDecimal(userInput)) {
+                throw new InvalidDecimalNumberException("Invalid decimal number entered.");
+            }
+            System.out.println("Entered decimal number: " + userInput);
+        } catch (InvalidDecimalNumberException e) {
+            System.out.println("Caught InvalidDecimalNumberException: " + e.getMessage());
+        }
+    }
+
+    public static double getUserInput() {
+        // Simulating user input (you can replace this with actual user input code)
+        return 10.5; // Example: user enters a valid decimal number
+    }
+
+    public static boolean isValidDecimal(double number) {
+        // Implement your validation logic here
+        return true; // For demonstration purposes, always return true
+    }
+}
