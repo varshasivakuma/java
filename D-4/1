@@ -1,0 +1,26 @@
+public class PerfectNumbers {
+    public static void main(String[] args) {
+        int n = 5; // Number of perfect numbers to find
+        int count = 0;
+        int number = 1;
+
+        System.out.println("First " + n + " Perfect Numbers:");
+        while (count < n) {
+            if (isPerfectNumber(number)) {
+                System.out.println(number);
+                count++;
+            }
+            number++;
+        }
+    }
+
+    public static boolean isPerfectNumber(int number) {
+        int sum = 0;
+        for (int i = 1; i < number; i++) {
+            if (number % i == 0) {
+                sum += i;
+            }
+        }
+        return sum == number;
+    }
+}
