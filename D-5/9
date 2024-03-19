@@ -1,0 +1,31 @@
+public class ReverseAndAddPalindrome {
+    public static void main(String[] args) {
+        int inputNumber = 7325;
+        int count = 0;
+
+        while (!isPalindrome(inputNumber)) {
+            int reversedNumber = reverseNumber(inputNumber);
+            inputNumber += reversedNumber;
+            count++;
+            System.out.println(inputNumber);
+            if (isPalindrome(inputNumber)) {
+                System.out.println("Palindrome found after " + count + " iterations: " + inputNumber);
+                break;
+            }
+        }
+    }
+
+    public static int reverseNumber(int number) {
+        int reversedNumber = 0;
+        while (number != 0) {
+            int digit = number % 10;
+            reversedNumber = reversedNumber * 10 + digit;
+            number /= 10;
+        }
+        return reversedNumber;
+    }
+
+    public static boolean isPalindrome(int number) {
+        return number == reverseNumber(number);
+    }
+}
