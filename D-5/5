@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class PerfectSquaresAndSumOfDigits {
+    public static void main(String[] args) {
+        int lowerRange = 1;
+        int upperRange = 40;
+
+        List<Integer> resultList = findNumbers(lowerRange, upperRange);
+        System.out.println(resultList);
+    }
+
+    public static List<Integer> findNumbers(int lowerRange, int upperRange) {
+        List<Integer> result = new ArrayList<>();
+
+        for (int num = lowerRange; num <= upperRange; num++) {
+            int sumOfDigits = getSumOfDigits(num);
+            if (isPerfectSquare(num) && sumOfDigits < 10) {
+                result.add(num);
+            }
+        }
+
+        return result;
+    }
+
+    public static int getSumOfDigits(int number) {
+        int sum = 0;
+        while (number != 0) {
+            sum += number % 10;
+            number /= 10;
+        }
+        return sum;
+    }
+
+    public static boolean isPerfectSquare(int num) {
+        int sqrt = (int) Math.sqrt(num);
+        return sqrt * sqrt == num;
+    }
+}
