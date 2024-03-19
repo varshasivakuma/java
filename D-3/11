@@ -1,0 +1,65 @@
+class NumberThread extends Thread {
+    private int start;
+    private int end;
+
+    public NumberThread(String name, int start, int end) {
+        super(name);
+        this.start = start;
+        this.end = end;
+    }
+
+    @Override
+    public void run() {
+        if (getName().equals("T1")) {
+            for (int i = start; i <= end; i++) {
+                if (i % 2 == 0) {
+                    System.out.println(getName() + ": " + i);
+                }
+            }
+        } else if (getName().equals("T2")) {
+            for (int i = start; i <= end; i++) {
+                if (i % 2 != 0) {
+                    System.out.println(getName() + ": " + i);
+                }
+            }
+        }
+    }
+}
+
+public class ThreadJoinSleepDemo {
+    public static void main(String[] args) {
+        NumberThread thread1 = new NumberThread("T1", 1, 100);
+        NumberThread thread2 = new NumberThread("T2", 101, 200);
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            if (containsEvenNumbers(thread1) && containsEvenNumbers(thread2)) {
+                System.out.println("Both threads contain even numbers, joining...");
+                thread1.join();
+                thread2.join();
+            } else {
+                System.out.println("At least one thread doesn't contain even numbers, sleeping...");
+                thread1.sleep(10000); // Sleep for 10000 ms (10 seconds)
+                thread2.sleep(5000); // Sleep for 5000 ms (5 seconds)
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Main thread exiting.");
+    }
+
+    public static boolean containsEvenNumbers(Thread thread) {
+        if (thread instanceof NumberThread) {
+            NumberThread numberThread = (NumberThread) thread;
+            for (int i = numberThread.start; i <= numberThread.end; i++) {
+                if (i % 2 == 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
