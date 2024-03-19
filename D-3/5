@@ -1,0 +1,25 @@
+// Custom exception class
+class NegativeValueException extends Exception {
+    public NegativeValueException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            int userInput = getUserInput();
+            if (userInput < 0) {
+                throw new NegativeValueException("Negative values are not allowed.");
+            }
+            System.out.println("Entered value: " + userInput);
+        } catch (NegativeValueException e) {
+            System.out.println("Caught NegativeValueException: " + e.getMessage());
+        }
+    }
+
+    public static int getUserInput() {
+        // Simulating user input (you can replace this with actual user input code)
+        return -5;  // Example: user enters a negative value
+    }
+}
