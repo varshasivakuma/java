@@ -1,0 +1,45 @@
+public class IllegalArgumentExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            // Negative Argument in the method requiring nonnegative values
+            int value = -5;
+            if (value < 0) {
+                throw new IllegalArgumentException("Negative value not allowed");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught IllegalArgumentException: Negative Argument");
+        }
+
+        try {
+            // Invalid Enum Constant Passed to a Method
+            String direction = "Diagonal";
+            DirectionEnum directionEnum = DirectionEnum.valueOf(direction); // Trying to get an invalid enum constant
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught IllegalArgumentException: Invalid Enum Constant");
+        }
+
+        try {
+            // Setting an Invalid Range for a Method Parameter
+            int age = 150;
+            if (age < 0 || age > 120) {
+                throw new IllegalArgumentException("Invalid age range");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught IllegalArgumentException: Invalid Range for Method Parameter");
+        }
+
+        try {
+            // Empty or Null String Argument in a Method Requiring Non-Empty Strings
+            String name = null;
+            if (name == null || name.isEmpty()) {
+                throw new IllegalArgumentException("Name cannot be null or empty");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught IllegalArgumentException: Empty or Null String Argument");
+        }
+    }
+
+    enum DirectionEnum {
+        UP, DOWN, LEFT, RIGHT
+    }
+}
