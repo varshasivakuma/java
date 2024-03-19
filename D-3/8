@@ -1,0 +1,37 @@
+// Custom exception class
+class NonIntegerValueException extends Exception {
+    public NonIntegerValueException(String message) {
+        super(message);
+    }
+}
+
+// Declare that CustomExceptionDemo may throw NonIntegerValueException
+public class CustomExceptionDemo {
+    public static void main(String[] args) throws NonIntegerValueException {
+        try {
+            int userInput = getUserInput();
+            if (!isValidInteger(userInput)) {
+                throw new NonIntegerValueException("Non-integer value entered.");
+            }
+            System.out.println("Entered integer value: " + userInput);
+        } catch (NonIntegerValueException e) {
+            System.out.println("Caught NonIntegerValueException: " + e.getMessage());
+        }
+    }
+
+    // Declare that getUserInput may throw NonIntegerValueException
+    public static int getUserInput() throws NonIntegerValueException {
+        // Simulating user input (you can replace this with actual user input code)
+        int input = 10; // Example: user enters an integer value
+        if (!isValidInteger(input)) {
+            throw new NonIntegerValueException("Non-integer value entered.");
+        }
+        return input;
+    }
+
+    public static boolean isValidInteger(int number) {
+        // Check if the number is an integer according to your application's rules
+        // For demonstration purposes, check if the number is equal to its truncated value
+        return number == (int) number;
+    }
+}
