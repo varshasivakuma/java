@@ -1,0 +1,32 @@
+class Parent {
+    int num;
+
+    Parent(int num) {
+        this.num = num;
+    }
+
+    void display() {
+        System.out.println("Number in Parent class: " + num);
+    }
+}
+
+class Child extends Parent {
+    int num; // hiding num in Parent class
+
+    Child(int parentNum, int childNum) {
+        super(parentNum); // calling parameterized constructor of Parent class
+        this.num = childNum;
+    }
+
+    void display() {
+        super.display(); // calling display method of Parent class
+        System.out.println("Number in Child class: " + num);
+    }
+}
+
+public class MemberNameHiding {
+    public static void main(String[] args) {
+        Child child = new Child(10, 20);
+        child.display();
+    }
+}
