@@ -1,0 +1,44 @@
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class NumberFormatExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            // Parsing a Non-Numeric String
+            String nonNumericString = "abc";
+            int parsedValue = Integer.parseInt(nonNumericString); // Trying to parse a non-numeric string
+        } catch (NumberFormatException e) {
+            System.out.println("Caught NumberFormatException: Parsing a Non-Numeric String");
+        }
+
+        try {
+            // Reading User Input Without Validation
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter a number: ");
+            String userInput = scanner.nextLine();
+            int parsedInput = Integer.parseInt(userInput); // Trying to parse user input without validation
+        } catch (NumberFormatException e) {
+            System.out.println("Caught NumberFormatException: Reading User Input Without Validation");
+        }
+
+        try {
+            // Formatting Issues in Decimal Format
+            NumberFormat nf = new DecimalFormat("#,###.##");
+            String formattedNumber = nf.format("123abc"); // Trying to format a non-numeric string
+        } catch (NumberFormatException e) {
+            System.out.println("Caught NumberFormatException: Formatting Issues in Decimal Format");
+        }
+
+        try {
+            // Incorrectly using localized decimal separators
+            Locale.setDefault(Locale.FRANCE);
+            NumberFormat nf = NumberFormat.getNumberInstance();
+            double value = nf.parse("1.234,56").doubleValue(); // Incorrectly using localized decimal separators
+        } catch (ParseException | NumberFormatException e) {
+            System.out.println("Caught NumberFormatException: Incorrectly using localized decimal separators");
+        }
+    }
+}
