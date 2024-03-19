@@ -1,0 +1,17 @@
+public class NumberSquareArray {
+    public static void main(String[] args) {
+        int number = 5; // Example number
+        int[] numberSquareArray = createNumberSquareArray(number);
+        
+        System.out.println("Array with first element as number and second element as square:");
+        System.out.println("Number\tSquare");
+        System.out.println(numberSquareArray[0] + "\t" + numberSquareArray[1]);
+    }
+
+    public static int[] createNumberSquareArray(int number) {
+        int[] array = new int[2];
+        array[0] = number; // First element as number
+        array[1] = number * number; // Second element as square of the number
+        return array;
+    }
+}
