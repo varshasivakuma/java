@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class PerfectSquareWithDigitSum {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter lower range: ");
+        int lowerRange = scanner.nextInt();
+        System.out.print("Enter upper range: ");
+        int upperRange = scanner.nextInt();
+        scanner.close();
+
+        ArrayList<Integer> result = findPerfectSquares(lowerRange, upperRange);
+        System.out.println(result);
+    }
+
+    public static ArrayList<Integer> findPerfectSquares(int lowerRange, int upperRange) {
+        ArrayList<Integer> perfectSquares = new ArrayList<>();
+        for (int i = lowerRange; i <= upperRange; i++) {
+            if (isPerfectSquare(i) && digitSum(i) < 10) {
+                perfectSquares.add(i);
+            }
+        }
+        return perfectSquares;
+    }
+
+    public static boolean isPerfectSquare(int num) {
+        int sqrt = (int) Math.sqrt(num);
+        return sqrt * sqrt == num;
+    }
+
+    public static int digitSum(int num) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+}
