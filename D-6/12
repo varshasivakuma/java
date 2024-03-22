@@ -1,0 +1,46 @@
+public class ReverseAndAddPalindrome {
+    public static void main(String[] args) {
+        String[] testCases = {"8765", "-8765", "0", "EIGHT FIVE", "87.57"};
+
+        for (String testCase : testCases) {
+            System.out.println("Input: " + testCase);
+            String result = reverseAndAddPalindrome(testCase);
+            System.out.println("Output: " + result);
+            System.out.println();
+        }
+    }
+
+    public static String reverseAndAddPalindrome(String input) {
+        try {
+            int num = Integer.parseInt(input);
+            return reverseAndAddPalindrome(num);
+        } catch (NumberFormatException e) {
+            return "Invalid input";
+        }
+    }
+
+    public static String reverseAndAddPalindrome(int num) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(num);
+        while (!isPalindrome(sb.toString())) {
+            int reversed = Integer.parseInt(sb.reverse().toString());
+            int sum = num + reversed;
+            sb.setLength(0); // Clear StringBuilder
+            sb.append(sum);
+        }
+        return sb.toString();
+    }
+
+    public static boolean isPalindrome(String str) {
+        int left = 0;
+        int right = str.length() - 1;
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+}
