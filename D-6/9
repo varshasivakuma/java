@@ -1,0 +1,49 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class CommonElementsInArrays {
+    public static void main(String[] args) {
+        int[][] testCases = {{1, 2, 3, 4}, {2, 4, 5, 6, 7},
+                {1, 2, 3, 4}, {4, 5, 6, 7, 8},
+                {1, -2, 3, 4}, {1, -2, 5, 7, 8},
+                {45, 78, 56, 89}, {92, 34, 56, -78, -90}};
+        
+        for (int i = 0; i < testCases.length; i += 2) {
+            System.out.println("Input 1: " + arrayToString(testCases[i]));
+            System.out.println("Input 2: " + arrayToString(testCases[i + 1]));
+            ArrayList<Integer> commonElements = findCommonElements(testCases[i], testCases[i + 1]);
+            System.out.println("Common Elements: " + commonElements);
+            System.out.println();
+        }
+    }
+
+    public static ArrayList<Integer> findCommonElements(int[] arr1, int[] arr2) {
+        HashSet<Integer> set = new HashSet<>();
+        ArrayList<Integer> commonElements = new ArrayList<>();
+        
+        for (int num : arr1) {
+            set.add(num);
+        }
+
+        for (int num : arr2) {
+            if (set.contains(num)) {
+                commonElements.add(num);
+            }
+        }
+
+        return commonElements;
+    }
+
+    public static String arrayToString(int[] arr) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < arr.length; i++) {
+            sb.append(arr[i]);
+            if (i < arr.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+}
