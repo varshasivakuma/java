@@ -1,0 +1,41 @@
+public class BankAccount {
+    private String depositorName;
+    private int accountNumber;
+    private String accountType;
+    private double balance;
+
+    public BankAccount(String depositorName, int accountNumber, String accountType, double balance) {
+        this.depositorName = depositorName;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.balance = balance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposit successful. New balance: " + balance);
+    }
+
+    public void withdraw(double amount) {
+        if (balance - amount < 500) {
+            System.out.println("Withdrawal failed. Minimum balance must be maintained (Rs.500.00).");
+        } else {
+            balance -= amount;
+            System.out.println("Withdrawal successful. New balance: " + balance);
+        }
+    }
+
+    public void displayBalance() {
+        System.out.println("Balance for Account Number " + accountNumber + ": Rs." + balance);
+    }
+
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("Raja", 100, "Savings", 10000);
+        account.displayBalance();
+
+        // Example transactions
+        account.deposit(8000);
+        account.withdraw(500);
+        account.displayBalance();
+    }
+}
